@@ -220,134 +220,194 @@ require('./index.scss')
 import React, {Component} from 'react';
 import { render } from 'react-dom';
 
+// class App extends Component {
+//   constructor(props) {
+//     super(props)
+
+//     this.state = {
+//       user: {name: 'mike'},
+//       todos: [
+//         {task: 'do laundry', id: 1, isComplete: false},
+//         {task: 'take out trash', id: 2, isComplete: true},
+//         {task: 'get milk', id: 3, isComplete: false},
+//       ]
+//     }
+
+//     this.toggleTodo = this.toggleTodo.bind(this)
+//     this.addTodo = this.addTodo.bind(this)
+//   }
+
+//   toggleTodo(todo) {
+//     var newState = {};
+//     newState.user = this.state.user;
+//     newState.todos = this.state.todos.map((item) => {
+//       if(todo.id === item.id) {
+//         return {
+//           task: item.task,
+//           id: item.id,
+//           isComplete: !item.isComplete
+//         }
+//       }
+//       return item
+//     })
+//     this.setState(newState)
+//   }
+
+//   addTodo(task) {
+//     var newState = {};
+//     newState.user = this.state.user
+//     newState.todos = this.state.todos.concat({
+//       task: task,
+//       id: this.state.todos.length+1,
+//       isComplete: false
+//     })
+//     this.setState(newState)
+//   }
+
+//   renderTodos() {
+//     return this.state.todos.map((item) => {
+//       return (
+//         <TodoItem todo={item} toggleTodo={this.toggleTodo} key={item.id}/>
+//       )
+//     })
+//   }
+
+
+//   render() {
+//     return (
+//       <div>
+//         <TodoHeader name={this.state.user.name}/>
+//         <div className="todo-container">
+//           <AddTodo addTodo={this.addTodo}/>
+//           {this.renderTodos()}
+//         </div>
+//       </div>
+//     )
+//   }
+
+// }
+
+
+// class AddTodo extends Component {
+//   constructor(props) {
+//     super(props)
+//     this.addTodo = this.addTodo.bind(this)
+//   }
+
+//   addTodo() {
+//     var newTodo = this.refs.addTodoInput.value; // newTodo = "make bed"
+//     if(newTodo) {
+//       this.props.addTodo(newTodo);
+//       this.refs.addTodoInput.value = ""
+//     }
+
+//   }
+//   render() {
+//     return (
+//       <div>
+//         <input placeholder="Add todo" type="text" ref="addTodoInput"/>
+//         <button className="btn btn-info btn-lg" onClick={this.addTodo}>Add</button>
+//       </div>
+//     )
+//   }
+// }
+
+// class TodoItem extends Component {
+//   constructor(props) {
+//     super(props)
+//   }
+
+//   render() {
+
+//     var {todo, toggleTodo} = this.props
+//     var isComplete = ""
+//     if(todo.isComplete) {
+//       isComplete = 'is-complete'
+//     }
+//     return (
+//       <div className={isComplete+' todo-item'}>
+//         <input type="checkbox" checked={todo.isComplete} onChange={() => {
+//           toggleTodo(todo)
+//         }}/>
+//         <span> {todo.task}</span>
+//       </div>
+//     )
+//   }
+// }
+
+
+// class TodoHeader extends Component {
+//   constructor(props) {
+//     super(props)
+//   }
+
+//   render() {
+//     return (
+//       <div>
+//         <h2>{this.props.name}'s Todos</h2>
+//       </div>
+//     )
+//   }
+// }
+
+
+
+
 class App extends Component {
   constructor(props) {
     super(props)
-
-    this.state = {
-      user: {name: 'mike'},
-      todos: [
-        {task: 'do laundry', id: 1, isComplete: false},
-        {task: 'take out trash', id: 2, isComplete: true},
-        {task: 'get milk', id: 3, isComplete: false},
-      ]
-    }
-
-    this.toggleTodo = this.toggleTodo.bind(this)
-    this.addTodo = this.addTodo.bind(this)
+     this.popUp=this.popUp.bind(this)
   }
+  popUp (title) { 
 
-  toggleTodo(todo) {
-    var newState = {};
-    newState.user = this.state.user;
-    newState.todos = this.state.todos.map((item) => {
-      if(todo.id === item.id) {
-        return {
-          task: item.task,
-          id: item.id,
-          isComplete: !item.isComplete
-        }
-      }
-      return item
-    })
-    this.setState(newState)
-  }
-
-  addTodo(task) {
-    var newState = {};
-    newState.user = this.state.user
-    newState.todos = this.state.todos.concat({
-      task: task,
-      id: this.state.todos.length+1,
-      isComplete: false
-    })
-    this.setState(newState)
-  }
-
-  renderTodos() {
-    return this.state.todos.map((item) => {
-      return (
-        <TodoItem todo={item} toggleTodo={this.toggleTodo} key={item.id}/>
-      )
-    })
-  }
-
-
-  render() {
-    return (
-      <div>
-        <TodoHeader name={this.state.user.name}/>
-        <div className="todo-container">
-          <AddTodo addTodo={this.addTodo}/>
-          {this.renderTodos()}
-        </div>
-      </div>
-    )
-  }
-
-}
-
-
-class AddTodo extends Component {
-  constructor(props) {
-    super(props)
-    this.addTodo = this.addTodo.bind(this)
-  }
-
-  addTodo() {
-    var newTodo = this.refs.addTodoInput.value; // newTodo = "make bed"
-    if(newTodo) {
-      this.props.addTodo(newTodo);
-      this.refs.addTodoInput.value = ""
-    }
-
-  }
-  render() {
-    return (
-      <div>
-        <input placeholder="Add todo" type="text" ref="addTodoInput"/>
-        <button className="btn btn-primary" onClick={this.addTodo}>Add</button>
-      </div>
-    )
-  }
-}
-
-class TodoItem extends Component {
-  constructor(props) {
-    super(props)
+    alert(title)
   }
 
   render() {
-
-    var {todo, toggleTodo} = this.props
-    var isComplete = ""
-    if(todo.isComplete) {
-      isComplete = 'is-complete'
-    }
-    return (
-      <div className={isComplete+' todo-item'}>
-        <input type="checkbox" checked={todo.isComplete} onChange={() => {
-          toggleTodo(todo)
-        }}/>
-        <span> {todo.task}</span>
-      </div>
-    )
+   return (
+     <div>
+     <h1>hello</h1>
+     <Article title="test1" buttonTitle="check this out!" onButtonClick={this.popUp}/>
+     <Article/>
+     <Article/>
+     <Article/>
+     </div>
+   ) 
   }
 }
 
 
-class TodoHeader extends Component {
-  constructor(props) {
-    super(props)
-  }
+var Article = (props) => {
+  return (
+    <div>
+      <span>{props.title}</span>
+      <button onClick={ () => props.onButtonClick(props.title) } >{props.buttonTitle}</button>
+    </div>
+  )
+}
 
-  render() {
-    return (
-      <div>
-        <h2>{this.props.name}'s Todos</h2>
-      </div>
-    )
-  }
+// class Article extends Component{
+//   constructor(props) {
+//     super (props)
+//   }
+
+//   render() {
+    
+//     return(
+//       <div>
+//         <span>{this.props.title}</span>
+//         <button onClick={ () => this.props.onButtonClick(this.props.title) } >{this.props.buttonTitle}</button>
+//       </div>
+//     )
+//   }
+// }
+
+function add() {
+
+}
+
+var add2 = () => {
+
 }
 
 
