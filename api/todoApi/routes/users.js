@@ -12,10 +12,14 @@ router.get('/', function(req, res, next) {
   res.send(allUsers);
 });
 
+router.get('/:id', function(req, res, next) {
+  res.send(store.users[req.params.id]);
+});
+
 router.get('/:id/todos', function(req, res, next) {
   var userId = req.params.id
   var usersTodos = []
-  var user = store.user[userId]
+  var user = store.users[userId]
   Object.keys(store.todos).forEach(function(id) {
     var todo = store.todos[id];
     if(todo.ownerId == userId) {
