@@ -19,13 +19,13 @@ require('./index.scss')
 
 // const todoReducer = (state, action) => {
 //   switch(action.type) {
-//     case "ADD_TODO": 
+//     case "ADD_TODO":
 //       return {
 //         task: action.task,
 //         isComplete: false,
 //         id: action.nextId
 //       }
-//     case "TOGGLE_TODO": 
+//     case "TOGGLE_TODO":
 //       if(state.id !== action.id) return state
 //       return {
 //         task: state.task,
@@ -42,21 +42,21 @@ require('./index.scss')
 // const todosReducer = (state= defaultState, action) => {
 //   switch(action.type) {
 //     case 'ADD_TODO':
-//       action.nextId = state.length+1 
+//       action.nextId = state.length+1
 //       return [
 //         todoReducer(null, action),
 //         ...state
-        
+
 //       ]
-//     case 'TOGGLE_TODO': 
+//     case 'TOGGLE_TODO':
 //       return state.map(todo => todoReducer(todo, action))
-//     case 'EDIT_TODO': 
+//     case 'EDIT_TODO':
 //       return state.map(todo => todoReducer(todo, action))
 //     default:
 //       return state
 //   }
 
-  
+
 // }
 
 // const todoAppReducers = combineReducers({
@@ -72,10 +72,10 @@ require('./index.scss')
 // //   return (
 // //     <div>
 // //       <h1>{value}</h1>
-// //       <button onClick={onIncrement}>+</button>  
+// //       <button onClick={onIncrement}>+</button>
 // //       <button onClick={onDecrement}>-</button>
 // //     </div>
-      
+
 // //   )
 // // }
 
@@ -124,7 +124,7 @@ require('./index.scss')
 //           <input type="text" ref="addTodo" className="form-control" placeholder="Add a Todo"/>
 //           <button className="btn btn-primary" hidden="true" type="submit">Add</button>
 //         </div>
-        
+
 //       </form>
 //     )
 //   }
@@ -136,14 +136,14 @@ require('./index.scss')
 //     const {toggleTodo, todos} = this.props
 //     return todos.map(todo => {
 //       return (
-//         <TodoItem 
-//           key={todo.id} 
-//           todo={todo} 
-//           clickFn={() => toggleTodo(todo.id)} 
+//         <TodoItem
+//           key={todo.id}
+//           todo={todo}
+//           clickFn={() => toggleTodo(todo.id)}
 //         />
 //       )
 
-//     }) 
+//     })
 //   }
 //   render() {
 //     const {addTodo} = this.props
@@ -151,8 +151,8 @@ require('./index.scss')
 //       <div>
 //         <AddTodo action={(task) => addTodo(task)}></AddTodo>
 //         {this.todoList()}
-//       </div> 
-      
+//       </div>
+
 //     )
 //   }
 // }
@@ -186,7 +186,7 @@ require('./index.scss')
 //       },
 //       toggleTodo: (id) => {
 //         dispatch(actions.toggleTodo(id))
-//       } 
+//       }
 //     }
 //   }
 // )(TodoList)
@@ -206,7 +206,7 @@ require('./index.scss')
 // render(
 //   <Provider store={store}>
 //     <App />
-//   </Provider>  
+//   </Provider>
 //   ,
 //   document.querySelector("#app")
 // )
@@ -284,7 +284,7 @@ class App extends Component {
       </div>
     )
   }
-  
+
 }
 
 
@@ -300,13 +300,13 @@ class AddTodo extends Component {
       this.props.addTodo(newTodo);
       this.refs.addTodoInput.value = ""
     }
-    
+
   }
   render() {
     return (
       <div>
         <input placeholder="Add todo" type="text" ref="addTodoInput"/>
-        <div className="btn btn-primary" onClick={this.addTodo}>Add</div>
+        <button className="btn btn-primary" onClick={this.addTodo}>Add</button>
       </div>
     )
   }
@@ -318,7 +318,7 @@ class TodoItem extends Component {
   }
 
   render() {
-    
+
     var {todo, toggleTodo} = this.props
     var isComplete = ""
     if(todo.isComplete) {
